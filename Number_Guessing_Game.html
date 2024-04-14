@@ -24,7 +24,7 @@
           return;
         }
         if (myGuess < randomNumber) {
-          feedback.textContent = "Try again. Your guess is too low." + " Tries left " + chance;
+          feedback.textContent = "Try again. Your guess is too low." + " -Guesses left " + chance;
           chance--;
           if (chance === 0) {
             feedback.textContent = "Game Over! The correct number was " + randomNumber + ".";
@@ -32,7 +32,7 @@
             return;
           }
         } else if (myGuess > randomNumber) {
-          feedback.textContent = "Try again. Your guess is too high." + " Tries left " + chance;
+          feedback.textContent = "Try again. Your guess is too high." + " -Guesses left " + chance;
           chance--;
           if (chance === 0) {
             feedback.textContent = "Game Over! The correct number was " + randomNumber + ".";
