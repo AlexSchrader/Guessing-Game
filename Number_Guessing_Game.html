@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Number Guessing Game</title>
+  </head>
+  <body>
+    <h1>Guess a number between 1 and 100</h1>
+    <p id="feedback"></p>
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="checkGuess()">Guess</button>
+    <script>
+      let randomNumber = Math.floor(Math.random() * 100) + 1;
+      let chance = 10;
+      let feedback = document.getElementById("feedback");
+
+      function checkGuess() {
+        let myGuess = document.getElementById("guess").value;
+        if (myGuess === "") {
+          feedback.textContent = "Please enter a number.";
+          return;
+        }
+        if (myGuess < 1 || myGuess > 100) {
+          feedback.textContent = "Please enter a number between 1 and 100.";
+          return;
+        }
+        if (myGuess < randomNumber) {
+          feedback.textContent = "Try again. Your guess is too low." + " Tries left " + chance;
+          chance--;
+          if (chance === 0) {
+            feedback.textContent = "Game Over! The correct number was " + randomNumber + ".";
+            document.getElementById("guess").disabled = true;
+            return;
+          }
+        } else if (myGuess > randomNumber) {
+          feedback.textContent = "Try again. Your guess is too high." + " Tries left " + chance;
+          chance--;
+          if (chance === 0) {
+            feedback.textContent = "Game Over! The correct number was " + randomNumber + ".";
+            document.getElementById("guess").disabled = true;
+            return;
+          }
+        } else {
+          feedback.textContent = "You got it right!";
+          document.getElementById("guess").disabled = true;
+          return;
+        }
+          
+      }
+    </script>
+  </body>
+</html>
